@@ -56,11 +56,11 @@ let main (cmd,finished) =
 (******************************************************
  implementation on an Intel MAX 10 FPGA with physical I/Os :
    - n_sw : 10 switch buttons
-   - button1, button2 : two press buttons 
+   - button1, button2 : 2 press buttons 
    - leds_0_to_4, leds_5_to_9 : 10 LEDs 
 *********************************************************)
 
-(* $ ./eclat -main=main_max10_fpga -intel-max10 ./eclat ../j1/v2/sol1f_ex_v2.ecl *)
+(* $ ./eclat -main=main_max10_fpga -intel-max10 ../j1/v2/sol1f_ex_v2.ecl *)
 
 let main_max10_fpga ((n_sw,button1,button2) : int<10> * bool * bool) : (int<5> * int<5> * int<48>)  =
   let step = resize_int<12>(n_sw) in
