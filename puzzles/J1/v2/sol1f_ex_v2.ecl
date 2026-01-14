@@ -25,14 +25,14 @@ let one_step ((is_left, step), all_zero, pos, pos_is_zero) =
      let az = if is_left & pos_is_zero then all_zero else azp1 in
      let next_pos = m + (if is_left then 100 else (- 100)) in
      (az, next_pos)
-  else let az = if m == 0 then azp1 else all_zero in 
-       let pos = m in
+  else let az = if m = 0 then azp1 else all_zero in 
+       let next_pos = m in
        (az, pos) ;;
 
 let decode_cmd (cmd:command) : (bool * int<12>) = 
   match cmd with 
-  | L(step) -> (true,step) 
-  | R(step) -> (false,step) ;;
+  | L(step) -> (true, step) 
+  | R(step) -> (false, step) ;;
 
 let exec_cmd ((is_left,step), (zeros, all_zero, pos, pos_is_zero)) =
     let q = step / 100 in
@@ -59,6 +59,8 @@ let main (cmd,finished) =
    - button1, button2 : two press buttons 
    - leds_0_to_4, leds_5_to_9 : 10 LEDs 
 *********************************************************)
+
+(* $ ./eclat -main=main_max10_fpga -intel-max10 ./eclat ../j1/v2/sol1f_ex_v2.ecl *)
 
 let main_max10_fpga ((n_sw,button1,button2) : int<10> * bool * bool) : (int<5> * int<5> * int<48>)  =
   let step = resize_int<12>(n_sw) in
