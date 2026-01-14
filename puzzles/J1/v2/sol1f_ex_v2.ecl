@@ -27,7 +27,7 @@ let one_step ((is_left, step), all_zero, pos, pos_is_zero) =
      (az, next_pos)
   else let az = if m = 0 then azp1 else all_zero in 
        let next_pos = m in
-       (az, pos) ;;
+       (az, next_pos) ;;
 
 let decode_cmd (cmd:command) : (bool * int<12>) = 
   match cmd with 
